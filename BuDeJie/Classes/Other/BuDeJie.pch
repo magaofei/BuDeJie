@@ -1,0 +1,44 @@
+//
+//  BuDeJie.pch
+//  BuDeJie
+//
+//  Created by MAMIAN on 2017/2/6.
+//  Copyright © 2017年 Gaofei Ma. All rights reserved.
+//  Xcode5之后不推荐使用，因为
+
+/* 
+ pch步骤: 1.提前编译  Target --> Build Settings --> Prefix Header
+ 
+ 存放公用宏
+ 存放公用头文件
+ 自定义Log
+ 
+ @#fileName
+ #给后面的加双引号
+ 
+ */
+#import "UIView+MKFrame.h"
+#import "MKConst.h"
+
+#define MKScreenHeight [UIScreen mainScreen].bounds.size.height
+#define MKScreenWidth [UIScreen mainScreen].bounds.size.width
+
+#ifdef DEBUG
+
+#define MKFunc MKLog(@"%s", __func__)
+
+#define MKLog(...) NSLog(__VA_ARGS__)
+
+#else //发布阶段
+
+#define MKLog(...)
+
+#endif
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0x00FF00) >> 8))/255.0 blue:((float)(rgbValue & 0x0000FF))/255.0 alpha:1.0]
+
+#define UIColorFromRGBA(rgbValue, alphaValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0x00FF00) >> 8))/255.0 blue:((float)(rgbValue & 0x0000FF))/255.0 alpha:alphaValue]
+
+
+
+
